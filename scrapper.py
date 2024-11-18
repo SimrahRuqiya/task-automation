@@ -21,6 +21,6 @@ driver = se.Chrome()
 
 driver.get("https://www.rit.edu/dubai/directory")
 
-click = driver.find_element(By.CLASS_NAME,"see-more")
-print(click)
+button = driver.find_element(By.CSS_SELECTOR,"see-more")
 
+button.click()
