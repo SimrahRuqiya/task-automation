@@ -35,7 +35,7 @@ data = [e.get_text(strip=True) for e in employee]  # Clean text
 
 # Group the lines into sets of four (Name, Title, Workplace, Email)
 structured_data = []
-for i in range(0, len(data)):  # Process every 4 lines
+for i in range(0, len(data), 4):  # Process every 4 lines
     if i + 3 < len(data):  # Ensure there are enough lines for a complete record
         name = data[i]
         title = data[i + 1]
@@ -48,4 +48,3 @@ df = pd.DataFrame(structured_data, columns=["Name", "Title", "Email"])
 
 # Save to CSV
 df.to_csv("directory.csv", index=False)
-
