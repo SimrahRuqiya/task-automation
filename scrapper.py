@@ -33,14 +33,14 @@ employees = [] #empty list for employees
     
 for block in employee_blocks:
         # extract name
-        name = block.select_one('div.pb-2 a').get_text(strip=True) if block.select_one('div.pb-2 a') else "N/A"
+        name = block.select_one('div.pb-2 a').get_text(strip=True) if block.select_one('div.pb-2 a') else " "
         
         # extract title
-        title = block.select_one('div.pb-2.directory-text-small').get_text(strip=True) if block.select_one('div.pb-2.directory-text-small') else "N/A"
+        title = block.select_one('div.pb-2.directory-text-small').get_text(strip=True) if block.select_one('div.pb-2.directory-text-small') else " "
         
         # extract email
         email_block = block.find_next_sibling('div', class_='col-xs-12 col-sm-4 person--extra-text')
-        email = email_block.select_one('a[href^="mailto:"]').get_text(strip=True) if email_block and email_block.select_one('a[href^="mailto:"]') else "N/A"
+        email = email_block.select_one('a[href^="mailto:"]').get_text(strip=True) if email_block and email_block.select_one('a[href^="mailto:"]') else " "
         
         # append to the list
         employees.append({'Name': name, 'Title': title, 'Email': email})
