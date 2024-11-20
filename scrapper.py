@@ -2,13 +2,11 @@
 ### use this file to implement the web scrapper in part 1 ###
 #############################################################
 
-import requests as rq
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver as se
 from selenium.webdriver.common.by import By
 import time
 import pandas as pd
-import re
 
 driver = se.Chrome()
 
@@ -19,13 +17,12 @@ for i in range(5):
         button = driver.find_element(By.CLASS_NAME,"see-more") #selecting the element from its class
         driver.execute_script("arguments[0].scrollIntoView(true);", button) #scrolls to element so that it can be clickable (doesnt work without this for sum reason)
         button.click()
+        print('Load More Button Clicked: ' , i+1)
         time.sleep(3) #waits for 3 seconds to give the page time to load
 
 #using soup from the loaded page
 soup = bs(driver.page_source, "html.parser") #to extract html code of the webpage
 driver.quit()
-
-
 
 employee_blocks = soup.select('div.col-xs-12.col-sm-5.person--info')  # selecting the div that includes the information of employees
 employees = [] #empty list for employees
@@ -44,8 +41,12 @@ for block in employee_blocks:
         
         # append to the list
         employees.append({'Name': name, 'Title': title, 'Email': email})
-    
+
+print("Entries Fetched!")
+
 df = pd.DataFrame(employees, columns=["Name", "Title", "Email"])
 
 # Save to CSV
 df.to_csv("directory.csv", index=False)
+
+print("CSV File 'directory' Created!")
