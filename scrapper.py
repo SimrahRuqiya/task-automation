@@ -27,7 +27,7 @@ driver.quit()
 employee_blocks = soup.select('div.col-xs-12.col-sm-5.person--info')  # selecting the div that includes the information of employees
 employees = [] #empty list for employees
 
-    
+count=0  
 for block in employee_blocks:
         # extract name
         name = block.select_one('div.pb-2 a').get_text(strip=True) if block.select_one('div.pb-2 a') else " "
@@ -41,6 +41,7 @@ for block in employee_blocks:
         
         # append to the list
         employees.append({'Name': name, 'Title': title, 'Email': email})
+        count+=1
 
 print("Entries Fetched!")
 
@@ -48,5 +49,5 @@ df = pd.DataFrame(employees, columns=["Name", "Title", "Email"])
 
 # Save to CSV
 df.to_csv("directory.csv", index=False)
-
+print("No of Entries: ",count)
 print("CSV File 'directory' Created!")
