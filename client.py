@@ -4,9 +4,12 @@
 
 import socket
 import xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
 #client reads xml file
 
-xml=input("Enter XML fil: ")
+xml=input("Enter XML file name: ")
+with open(xml,'r') as f:
+    data=f.read()
 
 p = ET.parse(xml)
 root=p.getroot()
