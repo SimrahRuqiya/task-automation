@@ -2,6 +2,7 @@
 ### use this file to implement the client-side in part 2 ###
 ############################################################
 
+#Names: Leen Abhari, Simrah Shabandri
 import socket
 import xml.etree.ElementTree as ET
 import sys

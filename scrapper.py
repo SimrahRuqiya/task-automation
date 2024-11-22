@@ -2,6 +2,8 @@
 ### use this file to implement the web scrapper in part 1 ###
 #############################################################
 
+#Names: Leen Abhari, Simrah Shabandri
+
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver as se
 from selenium.webdriver.common.by import By

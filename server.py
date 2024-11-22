@@ -2,6 +2,7 @@
 ### use this file to implement the server-side in part 2 ###
 ############################################################
 
+#Names: Leen Abhari, Simrah Shabandri
 import socket
 import xml.etree.ElementTree as ET
 import csv
@@ -17,7 +18,7 @@ except Exception as e:
     print(f"Error reading 'directory.csv': {e}")
     exit(1)
 
-# Create a socket and listen for client connections
+# Create a server socket and listen for client connections
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(("localhost", 65432))
 server_socket.listen()
